@@ -11,6 +11,28 @@ module.exports = function(grunt) {
 						' * <%= pkg.website %>' +
 						' */\n\n',
 		uglify: {
+			nonBasic: {
+				options: {
+					mangle: false,
+					compress: false,
+					preserveComments: 'some',
+					beautify: {
+						beautify: true,
+						indent_level: 2
+					}
+				},
+				files: {
+					'dest/respond.src.js': ['src/respond.js']
+				}
+			},
+			minBasic: {
+				options: {
+					banner: '<%= banner %>'
+				},
+				files: {
+					'dest/respond.min.js': ['src/respond.js']
+				}
+			},
 			nonMinMatchMedia: {
 				options: {
 					mangle: false,
@@ -22,7 +44,7 @@ module.exports = function(grunt) {
 					}
 				},
 				files: {
-					'dest/respond.src.js': ['src/matchmedia.polyfill.js', 'src/respond.js']
+					'dest/respond.matchmedia.src.js': ['src/matchmedia.polyfill.js', 'src/respond.js']
 				}
 			},
 			minMatchMedia: {
@@ -30,7 +52,7 @@ module.exports = function(grunt) {
 					banner: '<%= banner %>'
 				},
 				files: {
-					'dest/respond.min.js': ['src/matchmedia.polyfill.js', 'src/respond.js']
+					'dest/respond.matchmedia.min.js': ['src/matchmedia.polyfill.js', 'src/respond.js']
 				}
 			},
 			nonMinMatchMediaListener: {
@@ -71,7 +93,6 @@ module.exports = function(grunt) {
 				eqnull: true,
 				smarttabs: true,
 				node: true,
-				es5: true,
 				strict: false
 			},
 			globals: {
