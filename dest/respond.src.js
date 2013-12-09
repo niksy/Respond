@@ -104,6 +104,7 @@
         }
       }
     }
+    appendedEls.length = 0;
     for (var k in styleBlocks) {
       if (styleBlocks.hasOwnProperty(k)) {
         var ss = doc.createElement("style"), css = styleBlocks[k].join("\n");
