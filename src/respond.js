@@ -170,7 +170,7 @@
 					}
 
 					// if there's no media query at all (the () part), or min or max is not null, and if either is present, they're true
-					if( !thisstyle.hasquery || ( !minnull || !maxnull ) && ( minnull || currWidth >= min ) && ( maxnull || currWidth <= max ) ){
+					if( !thisstyle.isdpi && ( !thisstyle.hasquery || ( !minnull || !maxnull ) && ( minnull || currWidth >= min ) && ( maxnull || currWidth <= max ) ) ){
 						if( !styleBlocks[ thisstyle.media ] ){
 							styleBlocks[ thisstyle.media ] = [];
 						}
@@ -261,7 +261,8 @@
 						rules : rules.length - 1,
 						hasquery : thisq.indexOf("(") > -1,
 						minw : thisq.match( respond.regex.minw ) && parseFloat( RegExp.$1 ) + ( RegExp.$2 || "" ),
-						maxw : thisq.match( respond.regex.maxw ) && parseFloat( RegExp.$1 ) + ( RegExp.$2 || "" )
+						maxw : thisq.match( respond.regex.maxw ) && parseFloat( RegExp.$1 ) + ( RegExp.$2 || "" ),
+						isdpi : /(resolution|pixel-ratio)/.test(thisq)
 					} );
 				}
 			}
