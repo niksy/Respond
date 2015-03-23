@@ -109,7 +109,9 @@
 			if( thislink.rel.indexOf( "stylesheet" ) >= 0 && ext ){
 				(function( link ){			
 					fakejax( href, function( css ){
-						link.styleSheet.rawCssText = css;
+						if ( link.styleSheet ) {
+							link.styleSheet.rawCssText = css;
+						}
 						respond.update();
 					} );
 				})( thislink );
