@@ -119,6 +119,7 @@ module.exports = function(grunt) {
 				eqnull: true,
 				smarttabs: true,
 				node: true,
+				browser: true,
 				strict: false
 			},
 			globals: {
